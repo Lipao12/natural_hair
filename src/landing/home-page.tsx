@@ -14,6 +14,7 @@ export const HomePage = () => {
         />
         <h2 className="text-2xl text-center">Natural Hair</h2>
       </div>
+
       <div className="flex gap-16 px-4">
         <div className="flex-1 flex flex-col">
           <span className="text-[80px] leading-normal mb-6 mt-8 font-font_primary">
