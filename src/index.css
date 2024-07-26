@@ -5,3 +5,12 @@
 *{
   min-width: 0;
 }
+
+@layer utilities{
+  .main-text {
+    color: #242933;
+  }
+  .secondary-text {
+    color: text-gray-600;
+  }
+}
