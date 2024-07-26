@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily:{
-        sans: 'Inter'
+        font_primary: 'Noto Serif HK',
+        font_secondary: 'IBM Plex Serif'
     }
     },
   },
