@@ -5,7 +5,7 @@ export const CardServices = () => {
   return (
     <div className="max-w-[299px]">
       <img src={ServiceImg} />
-      <div className="bg-[#ededed] p-4 pr-6 rounded-b-2xl">
+      <div className="bg-[#ededed] shadow-md p-4 pr-6 rounded-b-2xl">
         <span className="text-[25px]">Corte de Cabelo</span>
         <p className="mt-2 text-justify">
           Cortes modernos e clássicos para todos os estilos. Transforme seu
