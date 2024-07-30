@@ -1,26 +1,43 @@
+import { products, services } from "../../public/products";
 import { CardServices } from "../ui/components/card-services";
-import { CardServiceV2 } from "../ui/components/card-services-v2";
 
 export const ServicesPage = () => {
+  console.log(services);
   return (
-    <div className="bg-white rounded-2xl flex flex-col p-7 space-y-10 ">
-      <span className="text-[47px]">
-        Do corte ao cuidado, estamos aqui para você
-      </span>
-      <span className="text-[34px]">Nossos serviços</span>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-4 pt-0 pl-0">
-        <CardServices />
-        <CardServices />
-        <CardServices />
+    <div className=" flex flex-col p-7 space-y-10 ">
+      <div className="bg-white rounded-2xl px-6 py-4 text-center">
+        <span className="text-[47px] ">
+          Do corte ao cuidado, estamos aqui para você
+        </span>
       </div>
+      <div className="bg-white rounded-2xl px-6 py-4">
+        <span className="text-[34px]">Nossos serviços</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-4 pt-0 pl-0">
+          {services.map((service: any) => {
+            return (
+              <CardServices
+                key={service.name}
+                name={service.name}
+                description={service.description}
+              />
+            );
+          })}
+        </div>
+      </div>
+      <div className="bg-white rounded-2xl px-6 py-4">
+        <span className="text-[34px]">Nossos produtos</span>
 
-      <span className="text-[34px]">Nossos produtos</span>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-4 pt-0 pl-0">
-        <CardServiceV2 />
-        <CardServiceV2 />
-        <CardServiceV2 />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-4 pt-0 pl-0">
+          {products.map((product: any) => {
+            return (
+              <CardServices
+                key={product.name}
+                name={product.name}
+                description={product.description}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
