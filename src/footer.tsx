@@ -2,6 +2,21 @@ import { Hexagon, MapPin, Phone } from "lucide-react";
 import { Divider } from "./ui/components/divider";
 
 export const Footer = () => {
+  const address = "Av. Augusto Calmon 1067, Linhares, ES, 29900-065";
+  const handleOpenWhatsapp = () => {
+    const phoneNumber = "27992458842";
+    const message = "Olá, gostaria de agendar um horário. Como posso proceder?";
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(url, "_blank");
+  };
+  const handleOpenMaps = () => {
+    const encodedAddress = encodeURIComponent(address);
+    const url = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+    window.open(url, "_blank");
+  };
+
   return (
     <div className="bg-[#242933] ">
       <div className="flex max-w-6xl px-6 py-10 mx-auto space-y-8 text-white">
@@ -13,7 +28,10 @@ export const Footer = () => {
 
           <Divider w="w-80" color="bg-white" margin="mt-10 mb-8" />
 
-          <div className="flex flex-row mb-4 gap-4 cursor-pointer max-w-80 text-[18px]">
+          <div
+            className="flex flex-row mb-4 gap-4 cursor-pointer max-w-80 text-[18px]"
+            onClick={handleOpenWhatsapp}
+          >
             <Hexagon />
             <span>Agende pelo WhatsApp</span>
           </div>
@@ -24,15 +42,14 @@ export const Footer = () => {
 
           <div
             className="flex flex-col max-w-72 pl-5 pt-3 pb-3 border space-y-2 mt-20 main-text bg-[#ededed] shadow-slate-300
-                            rounded-es-[20px] rounded-se-[20px]"
+                            rounded-es-[20px] rounded-se-[20px] cursor-pointer"
+            onClick={handleOpenMaps}
           >
             <div className="flex flex-row gap-4">
               <MapPin />
               <span className="text-[20px]">Onde estamos</span>
             </div>
-            <span className="font-font_primary text-[#45474d]">
-              Av. Augusto Calmon 1067, Linhares, ES, 29900-065
-            </span>
+            <span className="font-font_primary text-[#45474d]">{address}</span>
             <div className="cursor-pointer mr-auto p-1 pl-0">
               <span className="underline">Abrir Mapa</span>
             </div>
