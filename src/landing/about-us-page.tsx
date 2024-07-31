@@ -12,7 +12,7 @@ export const AboutPage = () => {
         <span className="text-[34px] font-font_primary">Sobre mim</span>
         <div className="flex">
           <div className="flex-1 p-4">
-            <span className="font-font_secondary leading-8 text-justify">
+            <span className="font-font_secondary text-black leading-8 text-justify text-[25px] ">
               {about_me_text}
             </span>
           </div>
