@@ -19,6 +19,7 @@ export const ServicesPage = () => {
                 key={service.name}
                 name={service.name}
                 description={service.description}
+                imageUrl="https://placehold.co/150x150?text=Foto+do+serviço"
               />
             );
           })}

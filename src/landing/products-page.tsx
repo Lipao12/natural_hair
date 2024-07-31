@@ -14,6 +14,7 @@ export const ProductsPage = () => {
                 key={product.name}
                 name={product.name}
                 description={product.description}
+                imageUrl="https://placehold.co/150x150?text=Foto+do+produto"
               />
             );
           })}
