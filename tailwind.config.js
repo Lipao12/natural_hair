@@ -9,6 +9,10 @@ export default {
       fontFamily:{
         font_primary: 'Noto Serif HK',
         font_secondary: 'IBM Plex Serif'
+    },
+    colors:{
+      secundary: "#242933",
+      terciary: "#ededed"
     }
     },
   },

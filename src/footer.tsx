@@ -18,7 +18,7 @@ export const Footer = () => {
   };
 
   return (
-    <div className="bg-[#242933] ">
+    <div className="bg-secundary">
       <div className="flex max-w-6xl px-6 py-10 mx-auto space-y-8 text-white">
         <div className="flex-1 flex flex-col">
           <p className="font-font_secondary text-[20px] mb-5">AGENDAMENTO</p>
@@ -41,7 +41,7 @@ export const Footer = () => {
           </div>
 
           <div
-            className="flex flex-col max-w-72 pl-5 pt-3 pb-3 border space-y-2 mt-20 main-text bg-[#ededed] shadow-slate-300
+            className="flex flex-col max-w-72 pl-5 pt-3 pb-3 border space-y-2 mt-20 main-text bg-terciary shadow-slate-300
                             rounded-es-[20px] rounded-se-[20px] cursor-pointer"
             onClick={handleOpenMaps}
           >
