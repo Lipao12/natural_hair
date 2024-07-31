@@ -1,4 +1,4 @@
-import { products } from "../../public/products";
+import { products } from "../assets/products";
 import { CardServices } from "../ui/components/card-services";
 
 export const ProductsPage = () => {

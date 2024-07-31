@@ -1,4 +1,4 @@
-import { services } from "../../public/products";
+import { services } from "../assets/products";
 import { CardServices } from "../ui/components/card-services";
 
 export const ServicesPage = () => {
