@@ -1,8 +1,11 @@
-import { SalonHighlight } from "../ui/components/salon-highlight";
+import { SalonHighlight } from "../../ui/components/salon-highlight";
 
 export const AboutSalon = () => {
   return (
-    <div className="flex flex-col bg-white rounded-2xl px-6 py-4 space-y-10">
+    <section
+      id="about-salon"
+      className="flex flex-col bg-white rounded-2xl px-6 py-4 space-y-10"
+    >
       <div>
         <h2 className="text-2xl font-bold mb-4 font-font_primary">
           Sobre o Natural Hair
@@ -84,6 +87,6 @@ export const AboutSalon = () => {
           imagePosition="left"
         />
       </div>
-    </div>
+    </section>
   );
 };

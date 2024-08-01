@@ -1,4 +1,5 @@
-import { Hexagon, MapPin, Phone } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { Divider } from "./ui/components/divider";
 
 export const Footer = () => {
@@ -32,7 +33,7 @@ export const Footer = () => {
             className="flex flex-row mb-4 gap-4 cursor-pointer max-w-80 text-[18px]"
             onClick={handleOpenWhatsapp}
           >
-            <Hexagon />
+            <FaWhatsapp className="text-green-500 size-[25px]" />
             <span>Agende pelo WhatsApp</span>
           </div>
           <div className="flex flex-row gap-4 max-w-80 text-[18px]">

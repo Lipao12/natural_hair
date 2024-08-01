@@ -1,11 +1,11 @@
-import Logo from "../assets/logo.png";
-import Profile from "../assets/profile-image.png";
+import Logo from "../../assets/logo.png";
+import Profile from "../../assets/profile-image.png";
 
 export const HomePage = () => {
   const handleGoToAboutUs = () => {};
 
   return (
-    <section className="flex flex-col min-h-screen" id="home">
+    <section id="home" className="flex flex-col min-h-screen">
       <div className="space-y-2 items-center justify-center w-[180px]">
         <img
           className="h-[80px] "
