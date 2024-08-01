@@ -6,6 +6,7 @@ interface CardServicesRowProps {
   imageUrl: string;
   time: number;
   price: number;
+  callBack: () => void;
 }
 
 export const CardServicesRow = ({
@@ -14,7 +15,11 @@ export const CardServicesRow = ({
   imageUrl,
   time,
   price,
+  callBack,
 }: CardServicesRowProps) => {
+  const handleCallBack = () => {
+    callBack();
+  };
   return (
     <div className="p-6">
       <div className="bg-[#ededed] shadow-md rounded-lg p-4 flex flex-row items-start relative">
@@ -39,6 +44,7 @@ export const CardServicesRow = ({
           <button
             type="button"
             className="bg-[#242933] text-white px-4 py-2 rounded-md flex items-center gap-2"
+            onClick={handleCallBack}
           >
             <span>Agendar</span>
             <ArrowRight />

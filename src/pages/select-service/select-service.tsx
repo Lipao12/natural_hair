@@ -1,7 +1,17 @@
+import { useState } from "react";
 import { services } from "../../assets/products";
 import { CardServicesRow } from "../../ui/components/card-row";
+import { ChooseHairDresserModal } from "../../ui/components/modal/modal-choose-hairdresser";
 
 export const SelectService = () => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const openModal = () => {
+    setIsOpenModal(true);
+  };
+  const closeModal = () => {
+    setIsOpenModal(false);
+  };
   return (
     <div className="flex flex-col max-w-6xl px-6 py-10 mx-auto space-y-8 min-h-screen">
       <div className="text-center">
@@ -25,11 +35,13 @@ export const SelectService = () => {
               imageUrl="https://placehold.co/150x150?text=Foto+do+serviço"
               time={service.time}
               price={service.price}
+              callBack={openModal}
             />
           );
         })}
       </div>
-      <div></div>
+
+      {isOpenModal && <ChooseHairDresserModal callBack={closeModal} />}
     </div>
   );
 };
