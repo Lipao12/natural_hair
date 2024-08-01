@@ -1,4 +1,5 @@
 import { X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { hairdressers } from "../../../assets/hairdressers";
 import { CardChooseHairDresser } from "../card-chosse-hairdresser";
 
@@ -9,6 +10,7 @@ interface ChooseHairDresserModalProps {
 export const ChooseHairDresserModal = ({
   callBack,
 }: ChooseHairDresserModalProps) => {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
@@ -30,11 +32,17 @@ export const ChooseHairDresserModal = ({
             <div className="flex flex-col space-y-8">
               {hairdressers.map((hairdresser) => {
                 return (
-                  <CardChooseHairDresser
-                    key={hairdresser.id}
-                    imageURL={hairdresser.image}
-                    name={hairdresser.name}
-                  />
+                  <div
+                    onClick={() => {
+                      navigate("/schedule");
+                    }}
+                  >
+                    <CardChooseHairDresser
+                      key={hairdresser.id}
+                      imageURL={hairdresser.image}
+                      name={hairdresser.name}
+                    />
+                  </div>
                 );
               })}
             </div>

@@ -1,19 +1,12 @@
-import Logo from "../../assets/logo.png";
 import Profile from "../../assets/profile-image.png";
+import { LogoComponent } from "../../ui/components/logo";
 
 export const HomePage = () => {
   const handleGoToAboutUs = () => {};
 
   return (
     <section id="home" className="flex flex-col min-h-screen">
-      <div className="space-y-2 items-center justify-center w-[180px]">
-        <img
-          className="h-[80px] "
-          src={Logo}
-          alt="Logo do salão Natural Hair"
-        />
-        <h2 className="text-2xl text-center">Natural Hair</h2>
-      </div>
+      <LogoComponent />
 
       <div className="flex gap-16 px-4">
         <div className="flex-1 flex flex-col">
