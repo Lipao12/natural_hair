@@ -14,10 +14,11 @@ export const ProductsPage = () => {
             .map((product: any) => {
               return (
                 <CardServices
-                  key={product.name}
+                  key={product.id}
                   name={product.name}
                   description={product.description}
                   imageUrl="https://placehold.co/150x150?text=Foto+do+produto"
+                  callBack={() => {}}
                 />
               );
             })}

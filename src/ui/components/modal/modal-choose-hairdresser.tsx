@@ -3,7 +3,7 @@ import { hairdressers } from "../../../assets/hairdressers";
 import { CardChooseHairDresser } from "../card-chosse-hairdresser";
 
 interface ChooseHairDresserModalProps {
-  callBack: () => {};
+  callBack: () => void;
 }
 
 export const ChooseHairDresserModal = ({
@@ -22,6 +22,10 @@ export const ChooseHairDresserModal = ({
                 {""}
                 <X className="size-5 text-zinc-400" />
               </button>
+            </div>
+            <div className="bg-zinc-800 rounded-xl px-4 py-2 space-y-1 mx-4">
+              <p className="text-zinc-500">Serviço escolhido</p>
+              <p className="ml-2 text-zinc-400 text-[20px]">Corte de Cabelo</p>
             </div>
             <div className="flex flex-col space-y-8">
               {hairdressers.map((hairdresser) => {

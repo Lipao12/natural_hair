@@ -1,5 +1,6 @@
 export const services = [
   {
+    id: "service-1",
     name: "Corte de Cabelo",
     description:
       "Experimente cortes modernos e clássicos que se adaptam a todos os estilos. Transforme seu visual com um corte personalizado realizado por nossos especialistas.",
@@ -8,6 +9,7 @@ export const services = [
     qnt: 3,
   },
   {
+    id: "service-2",
     name: "Análise Capilar",
     description:
       "Realize uma avaliação completa dos seus fios e couro cabeludo. Nossos profissionais vão identificar suas necessidades específicas para proporcionar um cuidado capilar personalizado.",
@@ -16,6 +18,7 @@ export const services = [
     qnt: 3,
   },
   {
+    id: "service-3",
     name: "Tratamento Hidratante Profundo",
     description:
       "Restauramos a hidratação e o brilho dos seus cabelos com um tratamento intensivo, ideal para cabelos danificados e ressecados.",
@@ -24,6 +27,7 @@ export const services = [
     qnt: 3,
   },
   {
+    id: "service-4",
     name: "Coloração Completa",
     description:
       "Dê um novo visual aos seus cabelos com nossa coloração completa. Escolha entre uma variedade de tons personalizados para obter o resultado que você sempre desejou.",
@@ -32,6 +36,7 @@ export const services = [
     qnt: 2,
   },
   {
+    id: "service-5",
     name: "Penteado para Eventos",
     description:
       "Deslumbre em qualquer ocasião com nossos penteados sofisticados e elegantes, perfeitos para eventos especiais e celebrações.",
@@ -43,24 +48,28 @@ export const services = [
 
 export const products = [
   {
+    id: "product-1",
     name: "Kit Desmaia Cabelo Anti Frizz E Volume Forever Liss",
     description:
       "O Kit foi criado para aliar os benefícios de três produtos que vão melhorar completamente a aparência dos seus cabelos.",
     price: 150,
   },
   {
+    id: "product-2",
     name: "Shampoo Revitalizante Natura",
     description:
       "Shampoo que revitaliza e fortalece os fios, proporcionando um brilho saudável e maciez.",
     price: 80,
   },
   {
+    id: "product-3",
     name: "Máscara Hidratante Deep Repair",
     description:
       "Máscara intensiva que repara e hidrata profundamente os cabelos, devolvendo a vitalidade.",
     price: 120,
   },
   {
+    id: "product-4",
     name: "Óleo de Argan 100% Puro",
     description:
       "Óleo nutritivo que combate o frizz e dá brilho aos cabelos, além de promover a hidratação.",

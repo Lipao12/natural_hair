@@ -1,9 +1,19 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { services } from "../../assets/products";
 import { CardServices } from "../../ui/components/card-services";
+import { ChooseHairDresserModal } from "../../ui/components/modal/modal-choose-hairdresser";
 
 export const ServicesPage = () => {
   const navigate = useNavigate();
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const openModal = () => {
+    setIsOpenModal(true);
+  };
+  const closeModal = () => {
+    setIsOpenModal(false);
+  };
   return (
     <section id="services" className=" flex flex-col p-7 space-y-10 ">
       <div className="bg-white rounded-2xl px-6 py-4 text-center">
@@ -30,15 +40,17 @@ export const ServicesPage = () => {
             .map((service: any) => {
               return (
                 <CardServices
-                  key={service.name}
+                  key={service.id}
                   name={service.name}
                   description={service.description}
                   imageUrl="https://placehold.co/150x150?text=Foto+do+serviço"
+                  callBack={openModal}
                 />
               );
             })}
         </div>
       </div>
+      {isOpenModal && <ChooseHairDresserModal callBack={closeModal} />}
     </section>
   );
 };
