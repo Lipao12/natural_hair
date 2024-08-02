@@ -131,7 +131,6 @@ export const Schedule = () => {
           : new Date(),
     });
 
-    // Formate e exiba as datas
     allDatesInRange.forEach((date) => {
       if (day.toLocaleLowerCase() === format(date, "eeee", { locale: ptBR })) {
         setSelectedDateAndTime({ date: date, time: time });
@@ -143,6 +142,18 @@ export const Schedule = () => {
       }
     });
   };
+
+  const getFormattedDay = (index: number) => {
+    if (eventStartEndDate) {
+      const date = addDays(eventStartEndDate.from, index);
+      let dayOfWeek = format(date, "eeee", { locale: ptBR });
+      dayOfWeek = dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.substr(1);
+      const dayOfMonth = format(date, "dd/MM");
+      return { dayOfWeek, dayOfMonth };
+    }
+    return { dayOfWeek: "", dayOfMonth: "" };
+  };
+
   return (
     <div>
       <div className="flex flex-col max-w-7xl px-6 py-10 w-4/5 mx-auto mt-8 min-h-screen space-y-5">
@@ -208,7 +219,10 @@ export const Schedule = () => {
                 }  w-1/5 p-4`}
               >
                 <h2 className="text-2xl font-semibold text-center mb-4  py-2">
-                  {daySchedule.day}
+                  {getFormattedDay(index).dayOfWeek}
+                  <div className="text-lg font-medium mt-1">
+                    {getFormattedDay(index).dayOfMonth}
+                  </div>
                 </h2>
                 {daySchedule.slots.map((slot, index) => (
                   <div
