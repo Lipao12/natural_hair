@@ -74,7 +74,10 @@ export const Schedule = () => {
   const [eventStartEndDate, setEventStartEndDate] = useState<
     { from: Date; to: Date } | undefined
   >();
-  const [selectedDateAndTime, setSelectedDateAndTime] = useState({
+  const [selectedDateAndTime, setSelectedDateAndTime] = useState<{
+    date: Date | null;
+    time: string;
+  }>({
     date: new Date(),
     time: "",
   });
@@ -110,7 +113,6 @@ export const Schedule = () => {
     if (date) {
       const dayOfWeek = getDay(date);
       const daysUntilTuesday = (2 - dayOfWeek) % 7;
-      console.log(daysUntilTuesday);
       const start = addDays(date, daysUntilTuesday);
       const end = addDays(start, 4);
       setEventStartEndDate({ from: start, to: end });
@@ -118,10 +120,15 @@ export const Schedule = () => {
     }
   };
   const handleTimeSlotSelect = (day: string, time: string) => {
-    console.log(eventStartEndDate);
     const allDatesInRange = eachDayOfInterval({
-      start: eventStartEndDate.from,
-      end: eventStartEndDate.to,
+      start:
+        eventStartEndDate && eventStartEndDate.from
+          ? eventStartEndDate.from
+          : new Date(),
+      end:
+        eventStartEndDate && eventStartEndDate.to
+          ? eventStartEndDate.to
+          : new Date(),
     });
 
     // Formate e exiba as datas
@@ -136,7 +143,6 @@ export const Schedule = () => {
       }
     });
   };
-  console.log(selectedDateAndTime);
   return (
     <div>
       <div className="flex flex-col max-w-7xl px-6 py-10 w-4/5 mx-auto mt-8 min-h-screen space-y-5">
