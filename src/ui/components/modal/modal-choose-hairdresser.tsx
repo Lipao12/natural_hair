@@ -4,13 +4,29 @@ import { hairdressers } from "../../../assets/hairdressers";
 import { CardChooseHairDresser } from "../card-chosse-hairdresser";
 
 interface ChooseHairDresserModalProps {
+  service:
+    | {
+        id: string;
+        name: string;
+        description: string;
+        time: number;
+        price: number;
+        qnt: number;
+      }
+    | undefined;
   callBack: () => void;
 }
 
 export const ChooseHairDresserModal = ({
+  service,
   callBack,
 }: ChooseHairDresserModalProps) => {
   const navigate = useNavigate();
+
+  const handleNavigation = (hairdresser_id: string) => {
+    navigate(`/schedule/${hairdresser_id}`);
+  };
+  console.log(service);
   return (
     <div>
       <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
@@ -27,14 +43,16 @@ export const ChooseHairDresserModal = ({
             </div>
             <div className="bg-zinc-800 rounded-xl px-4 py-2 space-y-1 mx-4">
               <p className="text-zinc-500">Serviço escolhido</p>
-              <p className="ml-2 text-zinc-400 text-[20px]">Corte de Cabelo</p>
+              <p className="ml-2 text-zinc-400 text-[20px]">{service?.name}</p>
+              <p className="ml-2 text-zinc-400">{service?.description}</p>
             </div>
             <div className="flex flex-col space-y-8">
               {hairdressers.map((hairdresser) => {
                 return (
                   <div
+                    key={hairdresser.id}
                     onClick={() => {
-                      navigate("/schedule");
+                      handleNavigation(hairdresser.id);
                     }}
                   >
                     <CardChooseHairDresser

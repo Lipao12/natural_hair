@@ -4,6 +4,8 @@ import { Calendar, CircleCheck, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
+import { useParams } from "react-router-dom";
+import { hairdressers } from "../assets/hairdressers";
 import { LogoComponent } from "../ui/components/logo";
 import { ConfirmModal } from "../ui/components/modal/modal-confirm-choice";
 
@@ -71,6 +73,13 @@ const schedule: DaySchedule[] = [
 ];
 
 export const Schedule = () => {
+  const { hairdresserId } = useParams();
+  console.log(hairdresserId);
+  const [hairdresser, setHairdresser] = useState<{
+    id: string;
+    name: string;
+    image: string;
+  }>();
   const [eventStartEndDate, setEventStartEndDate] = useState<
     { from: Date; to: Date } | undefined
   >();
@@ -84,6 +93,14 @@ export const Schedule = () => {
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
+
+  useEffect(() => {
+    const hd = hairdressers.filter(
+      (hairdresser) => hairdresser.id === hairdresserId
+    )[0];
+    console.log(hd);
+    setHairdresser(hd);
+  }, [hairdresserId]);
 
   useEffect(() => {
     const today = new Date();
@@ -163,7 +180,9 @@ export const Schedule = () => {
             Serviço Escolhido: Corte de Cabelo
           </h1>
           <div className="flex justify-between">
-            <h2 className="text-2xl font-semibold">Cabelereira: Andreia</h2>
+            <h2 className="text-2xl font-semibold">
+              Cabelereira: {hairdresser?.name}
+            </h2>
             <button
               onClick={openDatePicker}
               type="button"

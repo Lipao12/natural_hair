@@ -16,7 +16,11 @@ export const CardServices = ({
   return (
     <div className="p-6">
       <div className="bg-[#ededed] shadow-md rounded-lg p-4">
-        <img src={imageUrl} alt="Service Image" className="rounded-md mb-4" />
+        <img
+          src={imageUrl}
+          alt={`Imagem do serviço ${name}`}
+          className="rounded-md mb-4"
+        />
         <h2 className="text-xl font-semibold mb-2">{name}</h2>
         <p className="text-gray-600 text-justify">{description}</p>
         <button

@@ -3,15 +3,29 @@ import { services } from "../../assets/products";
 import { CardServicesRow } from "../../ui/components/card-row";
 import { ChooseHairDresserModal } from "../../ui/components/modal/modal-choose-hairdresser";
 
+interface Service {
+  id: string;
+  name: string;
+  description: string;
+  time: number;
+  price: number;
+  qnt: number;
+}
+
 export const SelectService = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [selectedService, setSelectedService] = useState<Service | undefined>();
 
-  const openModal = () => {
+  const openModal = (service: Service) => {
     setIsOpenModal(true);
+    setSelectedService(service);
   };
+
   const closeModal = () => {
     setIsOpenModal(false);
+    setSelectedService(undefined);
   };
+
   return (
     <div className="flex flex-col max-w-6xl px-6 py-10 mx-auto space-y-8 min-h-screen">
       <div className="text-center">
@@ -29,19 +43,26 @@ export const SelectService = () => {
         {services.map((service) => {
           return (
             <CardServicesRow
-              key={service.name}
+              key={service.id}
               name={service.name}
               description={service.description}
               imageUrl="https://placehold.co/150x150?text=Foto+do+serviço"
               time={service.time}
               price={service.price}
-              callBack={openModal}
+              callBack={() => {
+                openModal(service);
+              }}
             />
           );
         })}
       </div>
 
-      {isOpenModal && <ChooseHairDresserModal callBack={closeModal} />}
+      {isOpenModal && (
+        <ChooseHairDresserModal
+          callBack={closeModal}
+          service={selectedService}
+        />
+      )}
     </div>
   );
 };

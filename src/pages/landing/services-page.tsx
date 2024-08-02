@@ -4,16 +4,30 @@ import { services } from "../../assets/products";
 import { CardServices } from "../../ui/components/card-services";
 import { ChooseHairDresserModal } from "../../ui/components/modal/modal-choose-hairdresser";
 
+interface Service {
+  id: string;
+  name: string;
+  description: string;
+  time: number;
+  price: number;
+  qnt: number;
+}
+
 export const ServicesPage = () => {
   const navigate = useNavigate();
+  const [selectedService, setSelectedService] = useState<Service | undefined>();
   const [isOpenModal, setIsOpenModal] = useState(false);
 
-  const openModal = () => {
+  const openModal = (service: Service) => {
     setIsOpenModal(true);
+    setSelectedService(service);
   };
+
   const closeModal = () => {
     setIsOpenModal(false);
+    setSelectedService(undefined);
   };
+
   return (
     <section id="services" className=" flex flex-col p-7 space-y-10 ">
       <div className="bg-white rounded-2xl px-6 py-4 text-center">
@@ -44,13 +58,20 @@ export const ServicesPage = () => {
                   name={service.name}
                   description={service.description}
                   imageUrl="https://placehold.co/150x150?text=Foto+do+serviço"
-                  callBack={openModal}
+                  callBack={() => {
+                    openModal(service);
+                  }}
                 />
               );
             })}
         </div>
       </div>
-      {isOpenModal && <ChooseHairDresserModal callBack={closeModal} />}
+      {isOpenModal && (
+        <ChooseHairDresserModal
+          callBack={closeModal}
+          service={selectedService}
+        />
+      )}
     </section>
   );
 };
