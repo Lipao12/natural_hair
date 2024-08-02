@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Footer } from "../../footer";
 import { Header } from "../../header";
 import { AboutSalon } from "./about-salon-paeg";
 import { AboutPage } from "./about-us-page";
