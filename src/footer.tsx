@@ -19,7 +19,7 @@ export const Footer = () => {
   };
 
   return (
-    <div className="bg-secundary mx-1">
+    <section id="contact" className="bg-secundary mx-1">
       <div className="flex max-w-6xl px-6 py-10 mx-auto space-y-8 text-white">
         <div className="flex-1 flex flex-col">
           <p className="font-font_secondary text-[20px] mb-5">AGENDAMENTO</p>
@@ -73,6 +73,6 @@ export const Footer = () => {
           </span>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

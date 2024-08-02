@@ -6,7 +6,7 @@ export const HomePage = () => {
 
   return (
     <section id="home" className="flex flex-col min-h-screen">
-      <LogoComponent />
+      <LogoComponent textLeft={false} />
 
       <div className="flex gap-16 px-4">
         <div className="flex-1 flex flex-col">

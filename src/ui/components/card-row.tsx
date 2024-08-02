@@ -22,7 +22,7 @@ export const CardServicesRow = ({
   };
   return (
     <div className="p-6">
-      <div className="bg-[#ededed] shadow-md rounded-lg p-4 flex flex-row items-start relative">
+      <div className="bg-white shadow-md rounded-lg p-4 flex flex-row items-start relative">
         <img
           src={imageUrl}
           alt="Service Image"

@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { useParams } from "react-router-dom";
-import { hairdressers } from "../assets/hairdressers";
-import { LogoComponent } from "../ui/components/logo";
-import { ConfirmModal } from "../ui/components/modal/modal-confirm-choice";
+import { hairdressers } from "../../assets/hairdressers";
+import { LogoComponent } from "../../ui/components/logo";
+import { ConfirmModal } from "../../ui/components/modal/modal-confirm-choice";
 
 interface TimeSlot {
   start: string;
