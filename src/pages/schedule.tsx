@@ -90,7 +90,7 @@ export const Schedule = () => {
     const dayOfWeek = getDay(today);
     const daysUntilTuesday = (2 - dayOfWeek) % 7;
     const start = addDays(today, daysUntilTuesday);
-    const end = addDays(start, 4); // 4 days from Tuesday to Saturday
+    const end = addDays(start, 4);
     setEventStartEndDate({ from: start, to: end });
   }, []);
 
@@ -244,7 +244,7 @@ export const Schedule = () => {
             </div>
             <DayPicker
               mode="single"
-              selected={eventStartEndDate}
+              selected={eventStartEndDate?.from}
               onSelect={handleDateSelect}
               disabled={{
                 before: new Date(),
