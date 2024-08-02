@@ -12,18 +12,16 @@ interface HeaderProps {
 }
 
 const Link = ({ page, selectedPage, setSelectedPage }: LinkProps) => {
-  let page_to_go = "";
-  if (page === "Página inicial" || page === "Natural Hair") {
-    page_to_go = "home";
-  } else if (page === "Sobre o salão") {
-    page_to_go = "about-salon";
-  } else if (page === "Sobre mim") {
-    page_to_go = "about-me";
-  } else if (page === "Serviços") {
-    page_to_go = "services";
-  } else if (page === "Contato") {
-    page_to_go = "contact";
-  }
+  const pageToRouteMap: { [key: string]: string } = {
+    "Página Inicial": "home",
+    "Natural Hair": "home",
+    "Sobre o salão": "about-salon",
+    "Sobre mim": "about-me",
+    Serviços: "services",
+    Contato: "contact",
+  };
+
+  const page_to_go = pageToRouteMap[page] || "";
   return (
     <AnchorLink
       className={`${
@@ -61,13 +59,6 @@ export const Header = ({ selectedPage, setSelectedPage }: HeaderProps) => {
           </div>
           <div className="cursor-pointer hover:text-gray-300 transition-colors duration-300">
             <Link
-              page="Serviços"
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-            />
-          </div>
-          <div className="cursor-pointer hover:text-gray-300 transition-colors duration-300">
-            <Link
               page="Sobre o salão"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
@@ -76,6 +67,13 @@ export const Header = ({ selectedPage, setSelectedPage }: HeaderProps) => {
           <div className="cursor-pointer hover:text-gray-300 transition-colors duration-300">
             <Link
               page="Sobre mim"
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+          </div>
+          <div className="cursor-pointer hover:text-gray-300 transition-colors duration-300">
+            <Link
+              page="Serviços"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />

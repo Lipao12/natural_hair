@@ -172,9 +172,9 @@ export const Schedule = () => {
   };
 
   return (
-    <div>
+    <div className="fade-in">
       <div className="flex flex-col max-w-7xl px-6 py-10 w-4/5 mx-auto mt-8 min-h-screen space-y-5">
-        <LogoComponent />
+        <LogoComponent textLeft={false} />
         <div className="">
           <h1 className="text-3xl font-bold text-left mb-6">
             Serviço Escolhido: Corte de Cabelo
@@ -210,7 +210,7 @@ export const Schedule = () => {
               <button
                 type="button"
                 onClick={openModal}
-                className="mt-4 bg-[#242933] text-white px-4 py-2 rounded-md flex items-center gap-2"
+                className="mt-4 bg-[#242933] text-white px-4 py-2 rounded-md flex items-center gap-2 fade-in"
               >
                 <span>Confirmar Horário</span>
                 <CircleCheck />
@@ -225,7 +225,7 @@ export const Schedule = () => {
           <h2 className="text-2xl font-semibold text-center mb-4">
             Escolha um Horário
           </h2>
-          <div className="flex justify-between h-auto">
+          <div className="flex justify-between h-auto transition-transform transform ">
             {schedule.map((daySchedule, index) => (
               <div
                 key={daySchedule.day}
@@ -246,7 +246,7 @@ export const Schedule = () => {
                 {daySchedule.slots.map((slot, index) => (
                   <div
                     key={index}
-                    className={`border border-gray-300 rounded-md mb-4 p-3 text-center cursor-pointer ${
+                    className={`border border-gray-300 rounded-md mb-4 p-3 text-center cursor-pointer transition-colors duration-200 ${
                       selectedSlot === `${daySchedule.day}-${slot.start}`
                         ? "bg-[#242933] text-white"
                         : "bg-gray-50 hover:bg-gray-100"
@@ -288,13 +288,15 @@ export const Schedule = () => {
         </div>
       )}
       {isOpenModal && (
-        <ConfirmModal
-          callBack={closeModal}
-          informations={{
-            hairdresser: "Profissional 1",
-            dateTime: selectedDateAndTime,
-          }}
-        />
+        <div>
+          <ConfirmModal
+            callBack={closeModal}
+            informations={{
+              hairdresser: "Profissional 1",
+              dateTime: selectedDateAndTime,
+            }}
+          />
+        </div>
       )}
     </div>
   );

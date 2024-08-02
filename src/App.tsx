@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Footer } from "./footer";
-import { Header } from "./header";
 import { Landing } from "./pages/landing";
 import { AboutSalon } from "./pages/landing/about-salon-paeg";
 import { AboutPage } from "./pages/landing/about-us-page";
@@ -38,6 +37,7 @@ export function App() {
       <div>
         <RouterProvider router={router} fallbackElement={<h1>Ola</h1>} />
       </div>
+      <Footer />
     </div>
   );
 }

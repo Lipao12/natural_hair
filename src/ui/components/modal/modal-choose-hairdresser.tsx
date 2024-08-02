@@ -1,4 +1,5 @@
 import { X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { hairdressers } from "../../../assets/hairdressers";
 import { CardChooseHairDresser } from "../card-chosse-hairdresser";
@@ -22,21 +23,43 @@ export const ChooseHairDresserModal = ({
   callBack,
 }: ChooseHairDresserModalProps) => {
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(true);
+  const [animateModal, setAnimateModal] = useState(false);
 
   const handleNavigation = (hairdresser_id: string) => {
     navigate(`/schedule/${hairdresser_id}`);
   };
-  console.log(service);
+
+  useEffect(() => {
+    setAnimateModal(true);
+  }, []);
+
+  const handleClose = () => {
+    setAnimateModal(false);
+    setTimeout(() => {
+      setShowModal(false);
+      callBack();
+    }, 300);
+  };
+
   return (
     <div>
-      <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
-        <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 z-10">
+      <div
+        className={`fixed inset-0 bg-black/60 flex items-center justify-center transition-opacity duration-300 ${
+          showModal ? "modal-enter-active" : "modal-exit-active"
+        }`}
+      >
+        <div
+          className={`w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 z-10 transition-transform duration-300 ${
+            animateModal ? "modal-enter-active" : "modal-exit-active"
+          }`}
+        >
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-semibold text-white">
                 Escolha a profissional
               </h2>
-              <button type="button" onClick={callBack}>
+              <button type="button" onClick={handleClose}>
                 {""}
                 <X className="size-5 text-zinc-400" />
               </button>

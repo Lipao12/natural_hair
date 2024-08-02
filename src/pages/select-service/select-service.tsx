@@ -27,7 +27,7 @@ export const SelectService = () => {
   };
 
   return (
-    <div className="flex flex-col max-w-6xl px-6 py-10 mx-auto space-y-8 min-h-screen">
+    <div className="flex flex-col max-w-6xl px-6 py-10 mx-auto space-y-8 min-h-screen fade-in">
       <div className="text-center">
         <h1 className="text-3xl font-bold text-gray-800 mb-4">
           Esses são os nossos serviços para você. Escolha qual é o que melhor te

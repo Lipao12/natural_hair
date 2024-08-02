@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface ConfirmModalProps {
   callBack: () => void;
@@ -8,6 +9,21 @@ interface ConfirmModalProps {
 }
 
 export const ConfirmModal = ({ callBack, informations }: ConfirmModalProps) => {
+  const [showModal, setShowModal] = useState(true);
+  const [animateModal, setAnimateModal] = useState(false);
+
+  useEffect(() => {
+    setAnimateModal(true);
+  }, []);
+
+  const handleClose = () => {
+    setAnimateModal(false);
+    setTimeout(() => {
+      setShowModal(false);
+      callBack();
+    }, 300);
+  };
+
   const capitalize = (str: string) => {
     if (typeof str !== "string") {
       return "";
@@ -16,14 +32,22 @@ export const ConfirmModal = ({ callBack, informations }: ConfirmModalProps) => {
   };
   return (
     <div>
-      <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
-        <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 z-10">
+      <div
+        className={`fixed inset-0 bg-black/60 flex items-center justify-center transition-opacity duration-300 ${
+          showModal ? "modal-enter-active" : "modal-exit-active"
+        }`}
+      >
+        <div
+          className={`w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 z-10 transition-transform duration-300 ${
+            animateModal ? "modal-enter-active" : "modal-exit-active"
+          }`}
+        >
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-semibold text-white">
                 Confirmação do serviço e do horário
               </h2>
-              <button type="button" onClick={callBack}>
+              <button type="button" onClick={handleClose}>
                 {""}
                 <X className="size-5 text-zinc-400" />
               </button>
