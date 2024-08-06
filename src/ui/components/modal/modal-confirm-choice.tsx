@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { InputInfo } from "../input-info";
 
 interface ConfirmModalProps {
   callBack: () => void;
@@ -9,6 +10,7 @@ interface ConfirmModalProps {
 }
 
 export const ConfirmModal = ({ callBack, informations }: ConfirmModalProps) => {
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [showModal, setShowModal] = useState(true);
   const [animateModal, setAnimateModal] = useState(false);
 
@@ -31,7 +33,24 @@ export const ConfirmModal = ({ callBack, informations }: ConfirmModalProps) => {
     return str.charAt(0).toUpperCase() + str.substr(1);
   };
 
-  console.log(informations);
+  const formatedDataTime = `${capitalize(
+    format(informations.dateTime.date, "eeee", {
+      locale: ptBR,
+    })
+  )} - ${format(informations.dateTime.date, "dd/MM/yyyy")} às ${
+    informations.dateTime.time
+  }`;
+
+  const isPhoneNumberFormat = (str: string) =>
+    /^\(\d{2}\) \d \d{4}-\d{4}$/.test(str);
+  const handleConfirm = () => {
+    if (phoneNumber === "" || !isPhoneNumberFormat(phoneNumber)) {
+      console.log("Número de telefone inválido");
+      return;
+    }
+    console.log("Agendamento confirmado");
+    // Jogar para o banco de dados e enviar um toast
+  };
 
   return (
     <div>
@@ -55,33 +74,26 @@ export const ConfirmModal = ({ callBack, informations }: ConfirmModalProps) => {
                 <X className="size-5 text-zinc-400" />
               </button>
             </div>
-            <div className="bg-zinc-800 rounded-xl px-4 py-2 space-y-1 mx-4">
-              <p className="text-zinc-500 text-[14px]">Serviço escolhido</p>
-              <p className="ml-2 text-zinc-400 text-[20px]">
-                {informations.service?.name}
-              </p>
-            </div>
-            <div className="bg-zinc-800 rounded-xl px-4 py-2 space-y-1 mx-4">
-              <p className="text-zinc-500 text-[14px]">Profissional</p>
-              <p className="ml-2 text-zinc-400 text-[20px]">
-                {informations.hairdresser?.name}
-              </p>
-            </div>
-            <div className="bg-zinc-800 rounded-xl px-4 py-2 space-y-1 mx-4">
-              <p className="text-zinc-500 text-[14px]">Horário</p>
-              <p className="ml-2 text-zinc-400 text-[20px]">
-                {capitalize(
-                  format(informations.dateTime.date, "eeee", {
-                    locale: ptBR,
-                  })
-                )}{" "}
-                - {format(informations.dateTime.date, "dd/MM/yyyy")} às{" "}
-                {informations.dateTime.time}
-              </p>
-            </div>
+
+            <InputInfo
+              label="Serviço escolhido"
+              content={informations.service?.name}
+            />
+            <InputInfo
+              label="Profissional"
+              content={informations.hairdresser?.name}
+            />
+            <InputInfo label="Horário" content={formatedDataTime} />
+            <InputInfo
+              label="Número de celular"
+              content={phoneNumber}
+              disable={false}
+              onChange={setPhoneNumber}
+            />
+
             <button
               type="button"
-              onClick={() => {}}
+              onClick={handleConfirm}
               className="bg-lime-300 text-lime-950 hover:bg-lime-400 py-2 w-full h-11 px-5 font-medium flex items-center gap-2 justify-center rounded-lg"
             >
               Agendar Horário
