@@ -21,7 +21,7 @@ export const ConfirmModal = ({ callBack, informations }: ConfirmModalProps) => {
     setTimeout(() => {
       setShowModal(false);
       callBack();
-    }, 300);
+    }, 200);
   };
 
   const capitalize = (str: string) => {
@@ -30,6 +30,9 @@ export const ConfirmModal = ({ callBack, informations }: ConfirmModalProps) => {
     }
     return str.charAt(0).toUpperCase() + str.substr(1);
   };
+
+  console.log(informations);
+
   return (
     <div>
       <div
@@ -54,12 +57,14 @@ export const ConfirmModal = ({ callBack, informations }: ConfirmModalProps) => {
             </div>
             <div className="bg-zinc-800 rounded-xl px-4 py-2 space-y-1 mx-4">
               <p className="text-zinc-500 text-[14px]">Serviço escolhido</p>
-              <p className="ml-2 text-zinc-400 text-[20px]">Corte de Cabelo</p>
+              <p className="ml-2 text-zinc-400 text-[20px]">
+                {informations.service?.name}
+              </p>
             </div>
             <div className="bg-zinc-800 rounded-xl px-4 py-2 space-y-1 mx-4">
               <p className="text-zinc-500 text-[14px]">Profissional</p>
               <p className="ml-2 text-zinc-400 text-[20px]">
-                {informations.hairdresser}
+                {informations.hairdresser?.name}
               </p>
             </div>
             <div className="bg-zinc-800 rounded-xl px-4 py-2 space-y-1 mx-4">

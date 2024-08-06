@@ -6,6 +6,8 @@ import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { useParams } from "react-router-dom";
 import { hairdressers } from "../../assets/hairdressers";
+import { services } from "../../assets/products";
+import { Hairdresser, Service } from "../../types/types";
 import { LogoComponent } from "../../ui/components/logo";
 import { ConfirmModal } from "../../ui/components/modal/modal-confirm-choice";
 
@@ -73,13 +75,10 @@ const schedule: DaySchedule[] = [
 ];
 
 export const Schedule = () => {
-  const { hairdresserId } = useParams();
-  console.log(hairdresserId);
-  const [hairdresser, setHairdresser] = useState<{
-    id: string;
-    name: string;
-    image: string;
-  }>();
+  const { hairdresserId, serviceId } = useParams();
+  console.log(hairdresserId, serviceId);
+  const [hairdresser, setHairdresser] = useState<Hairdresser>();
+  const [service, setService] = useState<Service>();
   const [eventStartEndDate, setEventStartEndDate] = useState<
     { from: Date; to: Date } | undefined
   >();
@@ -101,6 +100,12 @@ export const Schedule = () => {
     console.log(hd);
     setHairdresser(hd);
   }, [hairdresserId]);
+
+  useEffect(() => {
+    const sv = services.filter((serv) => serv.id === serviceId)[0];
+    console.log(sv);
+    setService(sv);
+  }, [serviceId]);
 
   useEffect(() => {
     const today = new Date();
@@ -177,7 +182,7 @@ export const Schedule = () => {
         <LogoComponent textLeft={false} />
         <div className="">
           <h1 className="text-3xl font-bold text-left mb-6">
-            Serviço Escolhido: Corte de Cabelo
+            Serviço Escolhido: {service?.name}
           </h1>
           <div className="flex justify-between">
             <h2 className="text-2xl font-semibold">
@@ -292,7 +297,8 @@ export const Schedule = () => {
           <ConfirmModal
             callBack={closeModal}
             informations={{
-              hairdresser: "Profissional 1",
+              service: service,
+              hairdresser: hairdresser,
               dateTime: selectedDateAndTime,
             }}
           />

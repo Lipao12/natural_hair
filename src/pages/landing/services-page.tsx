@@ -2,17 +2,9 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { services } from "../../assets/products";
+import { Service } from "../../types/types";
 import { CardServices } from "../../ui/components/card-services";
 import { ChooseHairDresserModal } from "../../ui/components/modal/modal-choose-hairdresser";
-
-interface Service {
-  id: string;
-  name: string;
-  description: string;
-  time: number;
-  price: number;
-  qnt: number;
-}
 
 interface ServicesPageProps {
   setSelectedPage: (page: string) => void;
@@ -22,6 +14,11 @@ export const ServicesPage = ({ setSelectedPage }: ServicesPageProps) => {
   const navigate = useNavigate();
   const [selectedService, setSelectedService] = useState<Service | undefined>();
   const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const openModal = (service: Service) => {
+    setIsOpenModal(true);
+    setSelectedService(service);
+  };
 
   const closeModal = () => {
     setIsOpenModal(false);
@@ -77,7 +74,9 @@ export const ServicesPage = ({ setSelectedPage }: ServicesPageProps) => {
                   name={service.name}
                   description={service.description}
                   imageUrl="https://placehold.co/150x150?text=Foto+do+serviço"
-                  callBack={handleServiceClick} //openModal
+                  callBack={() => {
+                    openModal(service);
+                  }} //handleServiceClick} //openModal
                 />
               );
             })}

@@ -2,19 +2,11 @@ import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { hairdressers } from "../../../assets/hairdressers";
+import { Service } from "../../../types/types";
 import { CardChooseHairDresser } from "../card-chosse-hairdresser";
 
 interface ChooseHairDresserModalProps {
-  service:
-    | {
-        id: string;
-        name: string;
-        description: string;
-        time: number;
-        price: number;
-        qnt: number;
-      }
-    | undefined;
+  service: Service | undefined;
   callBack: () => void;
 }
 
@@ -26,8 +18,11 @@ export const ChooseHairDresserModal = ({
   const [showModal, setShowModal] = useState(true);
   const [animateModal, setAnimateModal] = useState(false);
 
-  const handleNavigation = (hairdresser_id: string) => {
-    navigate(`/schedule/${hairdresser_id}`);
+  const handleNavigation = (
+    hairdresser_id: string,
+    service_id: string | undefined
+  ) => {
+    navigate(`/schedule/${hairdresser_id}/${service_id}`);
   };
 
   useEffect(() => {
@@ -39,7 +34,7 @@ export const ChooseHairDresserModal = ({
     setTimeout(() => {
       setShowModal(false);
       callBack();
-    }, 300);
+    }, 200);
   };
 
   return (
@@ -75,7 +70,7 @@ export const ChooseHairDresserModal = ({
                   <div
                     key={hairdresser.id}
                     onClick={() => {
-                      handleNavigation(hairdresser.id);
+                      handleNavigation(hairdresser.id, service?.id);
                     }}
                   >
                     <CardChooseHairDresser

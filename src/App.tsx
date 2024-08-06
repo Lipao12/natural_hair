@@ -26,7 +26,7 @@ const router = createBrowserRouter([
     element: <SelectService />,
   },
   {
-    path: "/schedule/:hairdresserId",
+    path: "/schedule/:hairdresserId/:serviceId",
     element: <Schedule />,
   },
 ]);
