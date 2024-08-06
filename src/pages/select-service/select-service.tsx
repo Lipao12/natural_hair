@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { services } from "../../assets/products";
 import { CardServicesRow } from "../../ui/components/card-row";
@@ -39,7 +40,16 @@ export const SelectService = () => {
           aqui para garantir que você receba o melhor atendimento possível.
         </p>
       </div>
-      <div className="">
+      <motion.div
+        initial="hidden"
+        whileInView={"visible"}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.3 }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1 },
+        }}
+      >
         {services.map((service) => {
           return (
             <CardServicesRow
@@ -55,7 +65,7 @@ export const SelectService = () => {
             />
           );
         })}
-      </div>
+      </motion.div>
 
       {isOpenModal && (
         <ChooseHairDresserModal
