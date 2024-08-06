@@ -23,11 +23,6 @@ export const ServicesPage = ({ setSelectedPage }: ServicesPageProps) => {
   const [selectedService, setSelectedService] = useState<Service | undefined>();
   const [isOpenModal, setIsOpenModal] = useState(false);
 
-  const openModal = (service: Service) => {
-    setIsOpenModal(true);
-    setSelectedService(service);
-  };
-
   const closeModal = () => {
     setIsOpenModal(false);
     setSelectedService(undefined);
