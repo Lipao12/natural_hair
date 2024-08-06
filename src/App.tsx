@@ -5,6 +5,7 @@ import { AboutSalon } from "./pages/landing/about-salon-paeg";
 import { AboutPage } from "./pages/landing/about-us-page";
 import { Schedule } from "./pages/schedule/schedule";
 import { SelectService } from "./pages/select-service/select-service";
+import { ErrorRoute } from "./pages/error-route/error-route";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/schedule/:hairdresserId/:serviceId",
     element: <Schedule />,
+  },
+  {
+    path: "*",
+    element: <ErrorRoute />,
   },
 ]);
 

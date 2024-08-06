@@ -76,7 +76,6 @@ const schedule: DaySchedule[] = [
 
 export const Schedule = () => {
   const { hairdresserId, serviceId } = useParams();
-  console.log(hairdresserId, serviceId);
   const [hairdresser, setHairdresser] = useState<Hairdresser>();
   const [service, setService] = useState<Service>();
   const [eventStartEndDate, setEventStartEndDate] = useState<
@@ -97,13 +96,11 @@ export const Schedule = () => {
     const hd = hairdressers.filter(
       (hairdresser) => hairdresser.id === hairdresserId
     )[0];
-    console.log(hd);
     setHairdresser(hd);
   }, [hairdresserId]);
 
   useEffect(() => {
     const sv = services.filter((serv) => serv.id === serviceId)[0];
-    console.log(sv);
     setService(sv);
   }, [serviceId]);
 
