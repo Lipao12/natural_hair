@@ -12,6 +12,7 @@
   "dependencies": {
     "@date-io/date-fns": "^3.0.0",
     "date-fns": "^3.6.0",
+    "framer-motion": "^11.3.21",
     "lucide-react": "^0.416.0",
     "react": "^18.3.1",
     "react-anchor-link-smooth-scroll": "^1.0.12",

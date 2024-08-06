@@ -1,8 +1,22 @@
+import { useNavigate } from "react-router-dom";
 import Profile from "../../assets/profile-image.png";
 import { LogoComponent } from "../../ui/components/logo";
 
-export const HomePage = () => {
-  const handleGoToAboutUs = () => {};
+interface HomePageProps {
+  setSelectedPage: (page: string) => void;
+}
+
+export const HomePage = ({ setSelectedPage }: HomePageProps) => {
+  const navigate = useNavigate();
+
+  const handleGoToAboutUs = () => {
+    setSelectedPage("about-me");
+    navigate("/#about-me");
+    window.scrollTo({
+      top: document.getElementById("about-me")?.offsetTop || 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <section id="home" className="flex flex-col min-h-screen">

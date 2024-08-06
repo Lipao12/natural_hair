@@ -1,11 +1,20 @@
+import { motion } from "framer-motion";
 import Brush from "../../assets/brush.png";
 
 export const AboutPage = () => {
   return (
-    <section
+    <motion.section
       id="about-me"
       className="gap-16 px-4 bg-cover bg-center"
       style={{ backgroundImage: `url(${Brush})` }}
+      initial="hidden"
+      whileInView={"visible"}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 0.5 }}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
+      }}
     >
       <span className="text-[34px] font-bold mb-4 font-font_primary">
         Sobre mim
@@ -52,6 +61,6 @@ export const AboutPage = () => {
           <img src="https://placehold.co/446x574?text=Foto+dela" />
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };

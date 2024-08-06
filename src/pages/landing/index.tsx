@@ -11,10 +11,10 @@ export const Landing = () => {
     <div className="fade-in">
       <Header selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
       <div className="max-w-6xl px-6 py-10 mx-auto space-y-8">
-        <HomePage />
+        <HomePage setSelectedPage={setSelectedPage} />
         <AboutSalon />
         <AboutPage />
-        <ServicesPage />
+        <ServicesPage setSelectedPage={setSelectedPage} />
       </div>
     </div>
   );

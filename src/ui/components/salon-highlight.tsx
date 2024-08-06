@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 interface SalonHighlightProps {
   imageUrl: string;
   altText: string;
@@ -14,7 +16,17 @@ export const SalonHighlight = ({
   const imageFirst = imagePosition === "left" ? "flex-row" : "flex-row-reverse";
 
   return (
-    <div className={`flex ${imageFirst} w-full`}>
+    <motion.div
+      className={`flex ${imageFirst} w-full`}
+      initial="hidden"
+      whileInView={"visible"}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 0.5 }}
+      variants={{
+        hidden: { opacity: 0, x: imagePosition === "left" ? 50 : -50 },
+        visible: { opacity: 1, x: 0 },
+      }}
+    >
       <img
         src={imageUrl}
         alt={altText}
@@ -23,6 +35,6 @@ export const SalonHighlight = ({
       <div className="mt-4 mb-4 h-auto w-full px-4 py-2 bg-secundary text-white">
         <span className="font-font_secondary text-[20px]">{text}</span>
       </div>
-    </div>
+    </motion.div>
   );
 };

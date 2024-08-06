@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { services } from "../../assets/products";
@@ -13,7 +14,11 @@ interface Service {
   qnt: number;
 }
 
-export const ServicesPage = () => {
+interface ServicesPageProps {
+  setSelectedPage: (page: string) => void;
+}
+
+export const ServicesPage = ({ setSelectedPage }: ServicesPageProps) => {
   const navigate = useNavigate();
   const [selectedService, setSelectedService] = useState<Service | undefined>();
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -28,13 +33,32 @@ export const ServicesPage = () => {
     setSelectedService(undefined);
   };
 
+  const handleServiceClick = () => {
+    setSelectedPage("contact");
+    navigate("/#contact");
+    window.scrollTo({
+      top: document.getElementById("contact")?.offsetTop || 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section id="services" className=" flex flex-col p-7 space-y-10 ">
-      <div className="bg-white rounded-2xl px-6 py-4 text-center">
+      <motion.div
+        className="bg-white rounded-2xl px-6 py-4 text-center"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1 },
+        }}
+        initial="hidden"
+        whileInView="visible"
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true, amount: 0.5 }}
+      >
         <span className="text-[47px] ">
           Do corte ao cuidado, estamos aqui para você!
         </span>
-      </div>
+      </motion.div>
       <div className="bg-white rounded-2xl px-6 py-4">
         <div className="flex flex-row justify-between items-baseline ">
           <span className="text-[34px]">Nossos serviços mais utilizados</span>
@@ -58,9 +82,7 @@ export const ServicesPage = () => {
                   name={service.name}
                   description={service.description}
                   imageUrl="https://placehold.co/150x150?text=Foto+do+serviço"
-                  callBack={() => {
-                    openModal(service);
-                  }}
+                  callBack={handleServiceClick} //openModal
                 />
               );
             })}

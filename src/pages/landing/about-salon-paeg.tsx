@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { SalonHighlight } from "../../ui/components/salon-highlight";
 
 export const AboutSalon = () => {
@@ -6,7 +7,16 @@ export const AboutSalon = () => {
       id="about-salon"
       className="flex flex-col bg-white rounded-2xl px-6 py-4 space-y-10"
     >
-      <div>
+      <motion.div
+        initial="hidden"
+        viewport={{ once: true, amount: 0.5 }}
+        whileInView={"visible"}
+        transition={{ duration: 0.5 }}
+        variants={{
+          hidden: { opacity: 0, y: -50 },
+          visible: { opacity: 1, y: 0 },
+        }}
+      >
         <h2 className="text-2xl font-bold mb-4 font-font_primary">
           Sobre o Natural Hair
         </h2>
@@ -65,7 +75,7 @@ export const AboutSalon = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </motion.div>
 
       <div className="space-y-10">
         <SalonHighlight
