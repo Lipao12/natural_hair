@@ -15,11 +15,6 @@ export const ServicesPage = ({ setSelectedPage }: ServicesPageProps) => {
   const [selectedService, setSelectedService] = useState<Service | undefined>();
   const [isOpenModal, setIsOpenModal] = useState(false);
 
-  const openModal = (service: Service) => {
-    setIsOpenModal(true);
-    setSelectedService(service);
-  };
-
   const closeModal = () => {
     setIsOpenModal(false);
     setSelectedService(undefined);
@@ -74,9 +69,7 @@ export const ServicesPage = ({ setSelectedPage }: ServicesPageProps) => {
                   name={service.name}
                   description={service.description}
                   imageUrl="https://placehold.co/150x150?text=Foto+do+serviço"
-                  callBack={() => {
-                    openModal(service);
-                  }} //handleServiceClick} //openModal
+                  callBack={handleServiceClick} //handleServiceClick} //openModal
                 />
               );
             })}

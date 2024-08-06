@@ -25,7 +25,7 @@ export const CardServices = ({
         <p className="text-gray-600 text-justify">{description}</p>
         <button
           onClick={callBack}
-          className="mt-4 bg-[#242933] text-white px-4 py-2 rounded-md flex items-center gap-2"
+          className="mt-4 bg-[#242933] hover:bg-gray-900 text-white px-4 py-2 rounded-md flex items-center gap-2"
         >
           <span>Agendar</span>
           <ArrowRight />

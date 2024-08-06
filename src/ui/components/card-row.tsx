@@ -43,7 +43,7 @@ export const CardServicesRow = ({
         <div className="absolute bottom-4 right-4">
           <button
             type="button"
-            className="bg-[#242933] text-white px-4 py-2 rounded-md flex items-center gap-2"
+            className="bg-[#242933] hover:bg-gray-900 text-white px-4 py-2 rounded-md flex items-center gap-2"
             onClick={handleCallBack}
           >
             <span>Agendar</span>

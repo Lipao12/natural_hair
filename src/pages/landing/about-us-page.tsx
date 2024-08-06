@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import PersonalImage from "../../assets/andreia-1.jpeg";
 import Brush from "../../assets/brush.png";
 
 export const AboutPage = () => {
@@ -58,7 +59,10 @@ export const AboutPage = () => {
           </div>
         </div>
         <div>
-          <img src="https://placehold.co/446x574?text=Foto+dela" />
+          <img
+            src={PersonalImage}
+            className="w-[446px] h-[574px] rounded-md shadow-md shadow-purple-200 object-cover"
+          />
         </div>
       </div>
     </motion.section>
